@@ -1,52 +1,208 @@
-.chat-container {
-  width: 400px;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+/* Header with title + icons */
+.chat-header {
   display: flex;
-  flex-direction: column;
-  height: 500px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #00f5a0, #00d9f5);
+  color: black;
+  font-weight: 600;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
+.chat-title {
+  font-size: 18px;
+}
+
+.contact-icons a {
+  margin-left: 12px;
+  display: inline-block;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.contact-icons img {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+.contact-icons a:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Full page background */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top left, #1f1f2e, #0f0f17 60%);
+  color: white;
+}
+
+/* Main chat container */
+.chat-container {
+  width: 100%;
+  max-width: 900px;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  background: #141420;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+
+
+/* Messages section */
 .messages {
   flex: 1;
   overflow-y: auto;
-  margin-bottom: 10px;
-}
-
-.user-msg {
-  text-align: right;
-  background-color: #62eec7;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
-.bot-msg {
-  text-align: left;
-  background-color: #eee;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
-.input-box {
+  padding: 30px;
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
 }
 
+/* Message bubbles */
+.user-msg {
+  max-width: 65%;
+  padding: 14px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  animation: fadeIn 0.25s ease-in-out;
+  word-wrap: break-word;
+  float: right;
+}
+.bot-msg {
+  max-width: 65%;
+  padding: 14px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  animation: fadeIn 0.25s ease-in-out;
+  word-wrap: break-word;
+  float: left;
+}
+
+/* User message (right) */
+.user-msg {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #00f5a0, #00d9f5);
+  color: black;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 10px 25px rgba(0, 245, 160, 0.3);
+}
+
+/* Bot message (left) */
+.bot-msg {
+  align-self: flex-start;
+  background: #1e1e2f;
+  border: 1px solid #2a2a3d;
+  border-bottom-left-radius: 5px;
+  color: #e4e4e7;
+}
+
+/* Input area */
+.input-box {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  background: #181827;
+  border-top: 1px solid #2a2a3d;
+}
+
+/* Input field */
 input {
   flex: 1;
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 14px 18px;
+  border-radius: 30px;
+  border: 1px solid #2a2a3d;
+  background: #10101a;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
+input:focus {
+  border-color: #00d9f5;
+  box-shadow: 0 0 0 3px rgba(0, 217, 245, 0.2);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Send button */
 button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 14px 24px;
+  border-radius: 30px;
   border: none;
-  background-color: #62eec7;
+  background: linear-gradient(135deg, #00f5a0, #00d9f5);
+  color: black;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0, 245, 160, 0.4);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Scrollbar styling */
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #2a2a3d;
+  border-radius: 10px;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .chat-container {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .user-msg,
+  .bot-msg {
+    max-width: 80%;
+  }
 }

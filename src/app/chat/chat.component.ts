@@ -2,6 +2,8 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-chat',
@@ -13,27 +15,34 @@ import { HttpClient } from '@angular/common/http';
 export class ChatComponent {
   userInput = signal('');
   messages = signal<{ text: string, user: boolean }[]>([]);
-
+  // flag to block multiple API calls
+  loading = signal(false);
   constructor(private http: HttpClient) { }
 
   sendMessage() {
-    console.log("send is clciced")
+    console.log("send is clicKed")
     const question = this.userInput();
     if (!question.trim()) return;
-
+    // Prevent sending multiple requests if previous one is in progress
+    if (this.loading()) return;
     // Add user message
     this.messages.set([...this.messages(), { text: question, user: true }]);
     this.userInput.set('')
+    // Set loading flag
+    this.loading.set(true);
 
     // call backend
     this.http.post<{ answer: string }>
-      ('http://localhost:5000/ask', { question })
+      (`${environment.apiUrl}/ask`, { question })
       .subscribe({
         next: (res) => {
           this.messages.set([...this.messages(), { text: res.answer, user: false }]);
+          this.loading.set(false);
+
         },
         error: () => {
           this.messages.set([...this.messages(), { text: 'Error: Could not get response', user: false }]);
+          this.loading.set(false);
 
         }
       })
@@ -41,5 +50,13 @@ export class ChatComponent {
 
 
 
+  }
+
+   // Trigger sendMessage on Enter key
+  onKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault(); // Prevent newline in input
+      this.sendMessage();
+    }
   }
 }

@@ -1,17 +1,40 @@
 <div class="chat-container">
+
+  <!-- Header with title and Icons -->
+  <div class="chat-header">
+    <span class="chat-title">AI Assistant</span>
+    <span class="contact-icons">
+      <a href="https://www.linkedin.com/in/mudusir-shaik-669592135" target="_blank" title="LinkedIn">
+        <img src="assets/Icons/linkedin.svg" alt="LinkedIn">
+      </a>
+      <a href="mailto:shaikmudasir12@email.com" title="Email">
+        <img src="assets/Icons/gmail.svg" alt="Email">
+      </a>
+      <a href="https://github.com/mudasirshaik" target="_blank" title="GitHub">
+        <img src="assets/Icons/github.svg" alt="GitHub">
+      </a>
+    </span>
+  </div>
+
+  <!-- Chat Messages -->
   <div class="messages">
     <div *ngFor="let msg of messages()">
       <div [class.user-msg]="msg.user" [class.bot-msg]="!msg.user">
-        {{ msg.text }}
+        <div [innerHTML]="msg.text"></div>
       </div>
     </div>
   </div>
 
+  <!-- Input Box -->
   <div class="input-box">
-<input 
-  [ngModel]="userInput()" 
-  (ngModelChange)="userInput.set($event)"
-  placeholder="Ask me about my work experience..." 
-/>    <button (click)="sendMessage()">Send</button>
+    <input 
+      [ngModel]="userInput()" 
+      (ngModelChange)="userInput.set($event)"
+      (keydown)="onKeyPress($event)"
+      placeholder="Ask me about my work experience..." 
+    />
+    <button (click)="sendMessage()" [disabled]="loading()">
+      {{ loading() ? 'Waiting...' : 'Send' }}
+    </button>
   </div>
 </div>
