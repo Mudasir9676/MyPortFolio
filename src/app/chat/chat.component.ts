@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -14,10 +14,23 @@ import { marked } from 'marked';
 })
 export class ChatComponent {
   userInput = signal('');
-  messages = signal<{ text: string, user: boolean }[]>([]);
+  messages = signal<{ text: string, user: boolean }[]>([{ text: 'Type Something to know about Mudusir', user: false }]);
   // flag to block multiple API calls
   loading = signal(false);
+  @ViewChild('chatInput') chatInput!: ElementRef;
+  private messageSound = new Audio('assets/audio/incoming_message.mp3');
   constructor(private http: HttpClient) { }
+  ngOnInit() {
+    setTimeout(() => {
+          this.playMessageSound();
+
+    }, 2000);
+
+  }
+
+  ngAfterViewInit() {
+    this.chatInput.nativeElement.focus()
+  }
 
   sendMessage() {
     console.log("send is clicKed")
@@ -37,6 +50,7 @@ export class ChatComponent {
       .subscribe({
         next: (res) => {
           this.messages.set([...this.messages(), { text: res.answer, user: false }]);
+          this.playMessageSound();
           this.loading.set(false);
 
         },
@@ -47,16 +61,22 @@ export class ChatComponent {
         }
       })
 
-
-
-
   }
 
-   // Trigger sendMessage on Enter key
+  playMessageSound() {
+    this.messageSound.currentTime = 0;
+    this.messageSound.play().catch(() => {
+      // Some browsers require user interaction first
+    });
+  }
+
+  // Trigger sendMessage on Enter key
   onKeyPress(event: KeyboardEvent) {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault(); // Prevent newline in input
       this.sendMessage();
     }
   }
+
+
 }
