@@ -1,0 +1,160 @@
+<div class="scroll-progress" [style.width.%]="scrollPercent"></div>
+
+<div class="portfolio-container" style="background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">Mudusir Shaik</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Angular Full Stack Developer</h1>
+    <p>Building Scalable Enterprise Applications</p>
+
+    <div class="hero-tags">
+      <span>4+ Years</span>
+      <span>Infosys</span>
+      <span>Multi-Tenant Systems</span>
+      <span>AI Integrations</span>
+    </div>
+
+    <div class="hero-buttons">
+      <button class="primary-btn">Hire Me</button>
+      <button class="secondary-btn" (click)="downloadResume()">
+        Download Resume
+      </button>
+      <button class="outline-btn" (click)="showResume = true">View Resume</button>
+
+      <div class="resume-panel" [class.open]="showResume">
+
+        <button class="close-btn" (click)="showResume = false">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <iframe src="https://drive.google.com/file/d/1c38uhTFjF62ytQ_kCE1-lxgbJ17JlGl5/preview">
+        </iframe>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT STATS -->
+  <section class="stats">
+
+    <div class="stat-card trust-gradient">
+      <mat-icon class="stat-icon">workspace_premium</mat-icon>
+      <h2>4+</h2>
+      <p>Years Experience</p>
+    </div>
+
+    <div class="stat-card trust-gradient">
+      <mat-icon class="stat-icon">apps</mat-icon>
+      <h2>3</h2>
+      <p>Enterprise Apps</p>
+    </div>
+
+    <div class="stat-card   trust-gradient">
+      <mat-icon class="stat-icon">emoji_events</mat-icon>
+      <h2>2</h2>
+      <p>Awards</p>
+    </div>
+
+    <div class="stat-card  trust-gradient">
+      <mat-icon class="stat-icon">groups</mat-icon>
+      <h2>100%</h2>
+      <p>Agile Collaboration</p>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Full Stack Developer at Infosys with 4+ years of experience
+      building scalable enterprise applications using Angular, Node.js,
+      and PostgreSQL. I specialize in multi-tenant systems, REST APIs,
+      performance optimization, and responsive UI design.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <!-- <app-skills></app-skills> -->
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+
+    <div class="project-grid">
+
+      <div class="project-card trust-gradient">
+        <h3>TMP – Ticket Management Portal</h3>
+        <p>Multi-Tenant | Role-Based Access | Angular + Node</p>
+      </div>
+
+      <div class="project-card trust-gradient">
+        <h3>Space Management Tool</h3>
+        <p>Request & Approval System | PostgreSQL Optimization</p>
+      </div>
+
+      <div class="project-card trust-gradient6ILIY6WSERTGHGRHDDDDDDDXGJJP">
+        <h3>Campus Solutions</h3>
+        <p>Gym & Yoga Booking | Responsive Angular UI</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+    <h2>Experience Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span>2025 - Present</span>
+        <p>Wingspan Platform & TMP</p>
+      </div>
+      <div class="timeline-item">
+        <span>2023 - 2024</span>
+        <p>Space Management Tool</p>
+      </div>
+      <div class="timeline-item">
+        <span>2022 - 2023</span>
+        <p>Campus Solutions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="awards">
+    <h2>Awards</h2>
+    <div class="award-card">🏆 Best Employee Award - 2024</div>
+    <div class="award-card">🏅 Insta Award</div>
+  </section>
+
+  <!-- RESUME CTA -->
+  <section class="resume-cta">
+    <h2>Interested in working together?</h2>
+    <button class="primary-btn">Download Resume</button>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: shaikmudasir12@gmail.com</p>
+    <p>Phone: +91 9676569326</p>
+  </section>
+
+  <!-- FLOATING CHAT BUTTON -->
+  <button class="chat-fab" (click)="openChat()">💬</button>
+
+</div>

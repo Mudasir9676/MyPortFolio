@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.chat-dialog .mat-mdc-dialog-container {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0 !important;
+  background: #f8f9fb;
+    /* overflow: hidden; */
+    /* transform: scale(0.95); */
+}

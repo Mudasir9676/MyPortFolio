@@ -1,0 +1,30 @@
+.layout{
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    /* grid-template-columns: 150px 1fr; */
+    grid-template-columns: 0px 1fr;
+    height: 100vh;
+     /* Define layout areas */
+  grid-template-areas:
+    "header header"
+    "sidenav main";
+
+  height: 100vh;
+}
+/* Assign areas */
+.header {
+  grid-area: header;
+  background: #1e293b;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 0px;
+}
+
+.sidenav {
+  grid-area: sidenav;
+  background: #fbfbfb;
+  color: white;
+  padding: 20px;
+}
+
