@@ -4,22 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { marked } from 'marked';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,MatIconModule],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent {
   userInput = signal('');
+  typing = signal(false);
   messages = signal<{ text: string, user: boolean }[]>([{ text: 'Type Something to know about Mudusir', user: false }]);
   // flag to block multiple API calls
   loading = signal(false);
   @ViewChild('chatInput') chatInput!: ElementRef;
   private messageSound = new Audio('assets/audio/incoming_message.mp3');
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,  private dialogRef: MatDialogRef<ChatComponent>
+) { }
   ngOnInit() {
     setTimeout(() => {
           this.playMessageSound();
@@ -77,6 +81,9 @@ export class ChatComponent {
       this.sendMessage();
     }
   }
+  closeChat() {
+  this.dialogRef.close();
+}
 
 
 }

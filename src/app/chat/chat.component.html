@@ -1,9 +1,16 @@
+        <!-- <mat-icon style="float: right;" (click)="closeChat()">❌</mat-icon> -->
+
 <div class="chat-page-layout">
 <div class="chat-container">
-
   <!-- Header with title and Icons -->
+   
   <div class="chat-header">
+       <div class="header-actions">
+    <!-- <button class="icon-btn" (click)="closeChat()" aria-label="Close chat"> -->
+    <!-- </button> -->
+  </div>
     <span class="chat-title">Mudusir's AI Assistant</span>
+   
     <span class="contact-icons">
       <a href="https://www.linkedin.com/in/mudusir-shaik-669592135" target="_blank" title="LinkedIn">
         <img src="assets/Icons/linkedin.svg" alt="LinkedIn">
@@ -23,12 +30,19 @@
     </span>
   </div>
 
+
   <!-- Chat Messages -->
   <div class="messages">
     <div *ngFor="let msg of messages()">
       <div [class.user-msg]="msg.user" [class.bot-msg]="!msg.user">
         <div [innerHTML]="msg.text"></div>
       </div>
+       <!-- 👇 typing indicator -->
+  <div class="bot-msg typing" *ngIf="typing()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
     </div>
   </div>
 

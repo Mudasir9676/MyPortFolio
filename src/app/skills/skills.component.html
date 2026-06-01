@@ -1,49 +1,86 @@
 <div class="scroll-progress" [style.width.%]="scrollPercent"></div>
 
-<div class="portfolio-container" style="background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);">
+<div class="portfolio-container">
+  <nav class="navbar" aria-label="Primary navigation">
+    <div class="brand">
+      <div class="logo">Mudusir Shaik</div>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        (click)="toggleMobileNav()"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">Mudusir Shaik</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-links" [class.open]="showMobileNav">
+      <a href="#about" (click)="closeMobileNav()">About</a>
+      <a href="#skills" (click)="closeMobileNav()">Skills</a>
+      <a href="#projects" (click)="closeMobileNav()">Projects</a>
+      <a href="#contact" (click)="closeMobileNav()">Contact</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <div
+    class="resume-panel"
+    [class.open]="showResume"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Resume preview"
+  >
+    <div class="resume-panel-header">
+      <div>
+        <div class="resume-panel-label">Resume Preview</div>
+        <!-- <p class="resume-panel-subtitle">Open resume in a mobile-friendly viewer.</p> -->
+      </div>
+      <button
+        class="close-btn"
+        type="button"
+        (click)="showResume = false"
+        aria-label="Close resume preview"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <iframe
+      src="https://drive.google.com/file/d/1c38uhTFjF62ytQ_kCE1-lxgbJ17JlGl5/preview"
+      title="Mudusir Shaik Resume"
+    ></iframe>
+  </div>
+
   <section class="hero">
-    <h1>Angular Full Stack Developer</h1>
-    <p>Building Scalable Enterprise Applications</p>
+    <div class="hero-top">
+      <p class="eyebrow">Angular Full Stack Developer</p>
+      <h1>Building enterprise-grade products for modern teams.</h1>
+      <p class="hero-copy">
+        I create polished Angular applications backed by Node.js and PostgreSQL,
+        designed for performance, accessibility, and hiring success.
+      </p>
+    </div>
 
     <div class="hero-tags">
-      <span>4+ Years</span>
+      <span>4+ Years Experience</span>
       <span>Infosys</span>
       <span>Multi-Tenant Systems</span>
       <span>AI Integrations</span>
     </div>
 
-    <div class="hero-buttons">
-      <button class="primary-btn">Hire Me</button>
-      <button class="secondary-btn" (click)="downloadResume()">
+    <div class="hero-actions">
+      <button class="primary-btn" type="button" (click)="openEmail()">
+        Hire Me
+      </button>
+      <button class="secondary-btn" type="button" (click)="downloadResume()">
         Download Resume
       </button>
-      <button class="outline-btn" (click)="showResume = true">View Resume</button>
-
-      <div class="resume-panel" [class.open]="showResume">
-
-        <button class="close-btn" (click)="showResume = false">
-          <mat-icon>close</mat-icon>
-        </button>
-
-        <iframe src="https://drive.google.com/file/d/1c38uhTFjF62ytQ_kCE1-lxgbJ17JlGl5/preview">
-        </iframe>
-
-      </div>
+      <button class="outline-btn" type="button" (click)="showResume = true">
+        View Resume
+      </button>
     </div>
   </section>
+
 
   <!-- IMPACT STATS -->
   <section class="stats">
@@ -76,7 +113,7 @@
 
   <!-- ABOUT -->
   <section id="about" class="about">
-    <h2>About Me</h2>
+    <h3>About Me</h3>
     <p>
       I am a Full Stack Developer at Infosys with 4+ years of experience
       building scalable enterprise applications using Angular, Node.js,
@@ -86,75 +123,174 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills">
-    <!-- <app-skills></app-skills> -->
+  <section id="skills" class="skills">
+    <h3>Core Skills</h3>
+    <div class="skill-grid">
+      <span class="skill-pill">Angular</span>
+      <span class="skill-pill">TypeScript</span>
+      <span class="skill-pill">Node.js</span>
+      <span class="skill-pill">PostgreSQL</span>
+      <span class="skill-pill">REST APIs</span>
+      <span class="skill-pill">Responsive UI</span>
+      <span class="skill-pill">AWS</span>
+      <span class="skill-pill">AI Integrations</span>
+    </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects" class="projects">
-    <h2>Projects</h2>
+    <h3>Projects</h3>
 
-    <div class="project-grid">
+<div class="project-grid">
 
-      <div class="project-card trust-gradient">
-        <h3>TMP – Ticket Management Portal</h3>
-        <p>Multi-Tenant | Role-Based Access | Angular + Node</p>
-      </div>
-
-      <div class="project-card trust-gradient">
-        <h3>Space Management Tool</h3>
-        <p>Request & Approval System | PostgreSQL Optimization</p>
-      </div>
-
-      <div class="project-card trust-gradient6ILIY6WSERTGHGRHDDDDDDDXGJJP">
-        <h3>Campus Solutions</h3>
-        <p>Gym & Yoga Booking | Responsive Angular UI</p>
-      </div>
-
+  <div class="project-card trust-gradient">
+    <div class="project-card-top">
+      <span class="project-badge">⭐ Flagship Project</span>
+      <h3>Ticket Management Portal (TMP)</h3>
     </div>
+
+    <p>
+      Architecting and enhancing a multi-tenant enterprise platform that streamlines
+      ticket operations through intelligent workflow automation, role-based access control,
+      secure API integrations, and AI-powered assistance for improved user productivity.
+    </p>
+
+    <div class="project-tags">
+      <span>Angular 16</span>
+      <span>Node.js</span>
+      <span>PostgreSQL</span>
+      <span>AI Chatbot</span>
+    </div>
+  </div>
+
+
+  <div class="project-card trust-gradient">
+    <div class="project-card-top">
+      <span class="project-badge">🚀 Enterprise Solution</span>
+      <h3>Space Management Tool</h3>
+    </div>
+
+    <p>
+      Developed a scalable multi-tenant workspace management platform enabling request,
+      approval, and allocation workflows while delivering responsive user experiences,
+      real-time data visibility, and efficient resource utilization.
+    </p>
+
+    <div class="project-tags">
+      <span>Angular</span>
+      <span>Express.js</span>
+      <span>Workflow Engine</span>
+      <span>Analytics</span>
+    </div>
+  </div>
+
+
+  <div class="project-card trust-gradient">
+    <div class="project-card-top">
+      <span class="project-badge">✅ Production Platform</span>
+      <h3>Campus Solutions</h3>
+    </div>
+
+    <p>
+      Built modern and responsive modules for educational institutions covering
+      admissions, scheduling, facility management, gym and yoga bookings,
+      delivering seamless experiences across desktop and mobile devices.
+    </p>
+
+    <div class="project-tags">
+      <span>Angular</span>
+      <span>REST APIs</span>
+      <span>Responsive UI</span>
+      <span>Agile</span>
+    </div>
+  </div>
+
+</div>
   </section>
 
   <!-- EXPERIENCE -->
   <section class="experience">
-    <h2>Experience Timeline</h2>
+    <h3>Experience Timeline</h3>
 
     <div class="timeline">
       <div class="timeline-item">
-        <span>2025 - Present</span>
-        <p>Wingspan Platform & TMP</p>
+        <span class="timeline-period">2025 - Present</span>
+        <h3>Wingspan Platform & TMP</h3>
+        <p>Delivered a multi-tenant portal built for rapid scaling, secure access control, and polished enterprise UX.</p>
       </div>
       <div class="timeline-item">
-        <span>2023 - 2024</span>
-        <p>Space Management Tool</p>
+        <span class="timeline-period">2023 - 2024</span>
+        <h3>Space Management Tool</h3>
+        <p>Developed a responsive approvals system with real-time updates, clean dashboards, and strong accessibility.</p>
       </div>
       <div class="timeline-item">
-        <span>2022 - 2023</span>
-        <p>Campus Solutions</p>
+        <span class="timeline-period">2022 - 2023</span>
+        <h3>Campus Solutions</h3>
+        <p>Designed a user-friendly booking experience for gym and yoga services using mobile-first Angular design patterns.</p>
       </div>
     </div>
   </section>
 
   <!-- AWARDS -->
   <section class="awards">
-    <h2>Awards</h2>
+    <h3>Awards</h3>
     <div class="award-card">🏆 Best Employee Award - 2024</div>
     <div class="award-card">🏅 Insta Award</div>
   </section>
 
   <!-- RESUME CTA -->
   <section class="resume-cta">
-    <h2>Interested in working together?</h2>
-    <button class="primary-btn">Download Resume</button>
+    <div class="resume-cta-copy">
+      <h2>Ready to hire a reliable Angular Full Stack developer?</h2>
+      <p>Fast delivery, polished UI, and strong backend architecture for enterprise-grade apps.</p>
+    </div>
+    <div class="contact-actions">
+      <a class="cta-pill primary-btn" href="mailto:shaikmudasir12@gmail.com">
+        <mat-icon>email</mat-icon>
+        Email Me
+      </a>
+      <a class="cta-pill secondary-btn" href="tel:+919676569326">
+        <mat-icon>phone</mat-icon>
+        Call Me
+      </a>
+      <a
+        class="cta-pill outline-btn"
+        href="https://wa.me/919676569326"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <mat-icon>chat</mat-icon>
+        WhatsApp
+      </a>
+      <a
+        class="cta-pill outline-btn"
+        href="https://www.linkedin.com/in/mudusir-shaik/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <mat-icon>work</mat-icon>
+        LinkedIn
+      </a>
+    </div>
   </section>
+
 
   <!-- CONTACT -->
   <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: shaikmudasir12@gmail.com</p>
-    <p>Phone: +91 9676569326</p>
+    <h3>Contact Me</h3>
+    <p>
+      <a class="contact-link" href="mailto:shaikmudasir12@gmail.com"
+        >shaikmudasir12@gmail.com</a
+      >
+    </p>
+    <p>
+      Phone: <a class="contact-link" href="tel:+919676569326">+91 96765 69326</a>
+    </p>
   </section>
 
   <!-- FLOATING CHAT BUTTON -->
-  <button class="chat-fab" (click)="openChat()">💬</button>
-
+<div class="chat-fab"   [ngClass]="{ 'chat-fab-close': chatBoxOpen }"  aria-label="Open chat">
+  <mat-icon *ngIf="!chatBoxOpen" (click)="openChat()">chat</mat-icon>
+  <mat-icon *ngIf="chatBoxOpen" (click)="closeChat()">close</mat-icon>
+</div>
 </div>
