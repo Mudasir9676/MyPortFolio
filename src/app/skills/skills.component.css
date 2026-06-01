@@ -994,7 +994,7 @@ background: linear-gradient(45deg, #ff0000ab 0%, #191970 50%, #000033 100%);  bo
 
   color: #ffffff;
   background-color: black;
-  box-shadow: var(--shadow-md);
+  /* box-shadow: var(--shadow-md); */
   border: 1px solid rgba(255, 255, 255, 0.12);
 
   cursor: pointer;

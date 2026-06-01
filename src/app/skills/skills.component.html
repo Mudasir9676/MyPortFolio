@@ -53,11 +53,10 @@
 
   <section class="hero">
     <div class="hero-top">
-      <p class="eyebrow">Angular Full Stack Developer</p>
+      <p class="eyebrow">Full Stack Developer (Angular + Node.js)</p>
       <h1>Building enterprise-grade products for modern teams.</h1>
       <p class="hero-copy">
-        I create polished Angular applications backed by Node.js and PostgreSQL,
-        designed for performance, accessibility, and hiring success.
+       Developing high-performance enterprise solutions powered by Angular, Node.js, and PostgreSQL, with a strong focus on scalability, accessibility, and clean architecture.
       </p>
     </div>
 
@@ -241,7 +240,7 @@
   <!-- RESUME CTA -->
   <section class="resume-cta">
     <div class="resume-cta-copy">
-      <h2>Ready to hire a reliable Angular Full Stack developer?</h2>
+      <h2>Ready to hire a reliable  Full Stack developer?</h2>
       <p>Fast delivery, polished UI, and strong backend architecture for enterprise-grade apps.</p>
     </div>
     <div class="contact-actions">
@@ -289,8 +288,15 @@
   </section>
 
   <!-- FLOATING CHAT BUTTON -->
-<div class="chat-fab"   [ngClass]="{ 'chat-fab-close': chatBoxOpen }"  aria-label="Open chat">
-  <mat-icon *ngIf="!chatBoxOpen" (click)="openChat()">chat</mat-icon>
-  <mat-icon *ngIf="chatBoxOpen" (click)="closeChat()">close</mat-icon>
+<!-- FLOATING CHAT BUTTON -->
+<div
+  class="chat-fab"
+  [ngClass]="{ 'chat-fab-close': chatBoxOpen }"
+  aria-label="Open chat"
+  (click)="chatBoxOpen ? closeChat() : openChat()"
+>
+  <mat-icon>
+    {{ chatBoxOpen ? 'close' : 'chat' }}
+  </mat-icon>
 </div>
 </div>
