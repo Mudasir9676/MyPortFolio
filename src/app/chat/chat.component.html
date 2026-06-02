@@ -46,14 +46,37 @@
     </div>
   </div>
 
-  <!-- Input Box -->
-  <div class="input-box">
-    <input #chatInput [ngModel]="userInput()" (ngModelChange)="userInput.set($event)" (keydown)="onKeyPress($event)"
-      placeholder="Ask me about my work experience..." />
-    <button (click)="sendMessage()" [disabled]="loading()">
-      {{ loading() ? 'Waiting...' : 'Send' }}
-    </button>
+<!-- Thinking Status -->
+<div class="thinking-bar" *ngIf="loading()">
+  <div class="thinking-content">
+    <span class="pulse-dot"></span>
+    <span class="thinking-text">
+      AI is thinking<span class="dots"></span>
+    </span>
   </div>
+
+<small class="thinking-hint" *ngIf="messages().length <= 2">
+  Initial response may take a moment • follow-ups are usually faster
+</small>
+</div>
+
+<!-- Input Box -->
+<div class="input-box">
+  <input
+    #chatInput
+    [ngModel]="userInput()"
+    (ngModelChange)="userInput.set($event)"
+    (keydown)="onKeyPress($event)"
+    placeholder="Ask me about my work experience..."
+  />
+
+  <button
+    (click)="sendMessage()"
+    [disabled]="loading()">
+    <!-- <mat-icon>send</mat-icon> -->
+    Send
+  </button>
+</div>
 
 
 </div>

@@ -190,3 +190,131 @@ button:disabled {
   gap: 8px;
 }
 
+/* Thinking Bar */
+.thinking-bar{
+  margin-bottom:10px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  animation:fadeIn .3s ease;
+  backdrop-filter:blur(8px);
+}
+
+.thinking-content{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Pulse Dot */
+.pulse-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#6c63ff;
+  flex-shrink:0;
+  animation:pulse 1.2s infinite ease-in-out;
+}
+
+/* Text */
+.thinking-text{
+  font-size:.92rem;
+  font-weight:600;
+  color:#f3f4f6;
+  line-height:1.3;
+}
+
+.thinking-hint{
+  display:block;
+  margin-top:5px;
+  color:#9ca3af;
+  font-size:.78rem;
+  line-height:1.4;
+}
+
+/* Animated Dots */
+.dots::after{
+  content:'';
+  animation:dots 1.5s infinite;
+}
+
+@keyframes dots{
+  0%{content:'';}
+  25%{content:'.';}
+  50%{content:'..';}
+  75%{content:'...';}
+  100%{content:'';}
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.25);opacity:.55;}
+  100%{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(6px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* Tablet */
+@media (max-width:768px){
+
+  .thinking-bar{
+    padding:9px 12px;
+    border-radius:10px;
+  }
+
+  .thinking-content{
+    gap:7px;
+  }
+
+  .thinking-text{
+    font-size:.86rem;
+  }
+
+  .thinking-hint{
+    font-size:.74rem;
+  }
+
+  .pulse-dot{
+    width:7px;
+    height:7px;
+  }
+}
+
+/* Mobile */
+@media (max-width:480px){
+
+  .thinking-bar{
+    padding:8px 10px;
+    margin-bottom:8px;
+    border-radius:10px;
+  }
+
+  .thinking-content{
+    gap:6px;
+  }
+
+  .thinking-text{
+    font-size:.8rem;
+    font-weight:500;
+  }
+
+  .thinking-hint{
+    font-size:.7rem;
+    margin-top:4px;
+  }
+
+  .pulse-dot{
+    width:6px;
+    height:6px;
+  }
+}
