@@ -33,6 +33,8 @@ export class SkillsComponent {
       right: '20px'
     },
     // padding: '10px'
+    backdropClass: 'custom-dialog-backdrop',
+    panelClass: 'custom-dialog-panel'
   });
 }
   resumeDownload =

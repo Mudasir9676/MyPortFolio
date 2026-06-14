@@ -2,3 +2,10 @@
 
 html, body { height: 100%; overflow-x: hidden; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.custom-dialog-backdrop{
+  background-color: transparent !important;
+}
+.custom-dialog-panel{
+  background-color: transparent !important;
+  box-shadow: -10px 16px 4px rgba(210, 191, 191, 0) !important;
+}

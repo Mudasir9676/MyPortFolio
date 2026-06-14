@@ -288,6 +288,12 @@ button:disabled {
     width:7px;
     height:7px;
   }
+  /* Input area */
+.input-box {
+
+  gap: 0px;
+  
+}
 }
 
 /* Mobile */
@@ -317,4 +323,11 @@ button:disabled {
     width:6px;
     height:6px;
   }
+
+    /* Input area */
+.input-box {
+
+  gap: 0px;
+  
+}
 }
